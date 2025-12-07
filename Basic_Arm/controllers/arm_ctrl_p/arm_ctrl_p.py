@@ -1,5 +1,8 @@
 from controller import Robot
 import math
+import time
+import numpy as np
+import cv2  # For displaying the image
 
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
@@ -34,19 +37,14 @@ for s in sensors.values():
 
 # Camera
 camera = robot.getDevice('camera')
-camera.enable(timestep*2)
-
+camera.enable(timestep * 2)
 
 # -----------------------------------------------------------------------------------------------------
-# FUNCTION participents must complete
+# FUNCTION participants must complete
 # -----------------------------------------------------------------------------------------------------
 def arm_controller(sensor_values, image):
     """
     sensor_values = dict containing all sensor readings
-    image = camera image or None
-    Webots provides the camera frame as a raw BGRA byte buffer (no NumPy/OpenCV format).
-    To process it with OpenCV, reshape it into (H, W, 4) and remove the alpha channel → BGR image.
-
 
     Should return a dict:
     {
@@ -59,8 +57,25 @@ def arm_controller(sensor_values, image):
     }
     """
 
-    # TODO: participents implement logic here
-    # example: return all zeros
+    # TODO: process image and implement arm control logic here
+    print(sensor_values)
+    
+    if image is not None:
+        width = camera.getWidth()
+        height = camera.getHeight()
+        
+        # Convert image to a numpy array (BGRA format)
+        img_data = np.frombuffer(image, dtype=np.uint8)
+        img_data = img_data.reshape((height, width, 4))  # Reshape to (height, width, 4)
+        
+        # Convert BGRA to BGR by removing the alpha channel (last channel)
+        bgr_image = img_data[:, :, :3]
+
+        # Show the image using OpenCV
+        cv2.imshow("Camera Image", bgr_image)
+        cv2.waitKey(1)  
+        
+    #Return speed of each joint  
     return {
         "waist": 0.0,
         "shoulder": 0.0,
@@ -69,7 +84,6 @@ def arm_controller(sensor_values, image):
         "pitch": 0.0,
         "claw": 0.0
     }
-
 
 # -----------------------------------------------------------------------------------------------------
 # MAIN LOOP
@@ -82,10 +96,12 @@ while robot.step(timestep) != -1:
     # get camera frame (if needed)
     image = camera.getImage()
 
-
     # call the controller
     velocities = arm_controller(sensor_values, image)
 
     # set returned velocities to motors
     for joint, vel in velocities.items():
         motors[joint].setVelocity(vel)
+
+# Close all OpenCV windows when the simulation ends
+cv2.destroyAllWindows()

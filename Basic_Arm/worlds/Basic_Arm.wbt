@@ -1,4 +1,4 @@
-#VRML_SIM R2023a utf8
+#VRML_SIM R2023b utf8
 
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/floors/protos/Floor.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Parquetry.proto"
@@ -12,6 +12,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/paintings/protos/LandscapePainting.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/computers/protos/Laptop.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/plants/protos/PottedTree.proto"
+IMPORTABLE EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/kitchen/breakfast/protos/BiscuitBox.proto"
 
 WorldInfo {
   info [
@@ -20,8 +21,8 @@ WorldInfo {
   title "Basic Arm V1"
 }
 Viewpoint {
-  orientation -0.07176482914579597 0.25930521940717904 0.9631254396421421 0.5596302887425936
-  position -0.49447606238488095 1.7845331123699548 1.833585358689744
+  orientation -0.04480890404205129 0.995081198840384 0.08834913600558982 0.9427341707541794
+  position 1.6447878858770069 2.543230733108663 2.4608126137073514
 }
 DEF classroom Group {
   children [
@@ -42,8 +43,11 @@ DEF classroom Group {
       }
     }
     Door {
+      hidden translation_5 0.0015902535689660269 0.00018475055948136143 4.440892098500626e-16
+      hidden rotation_5 0 0 -1 0.001242397318338631
       translation 4.9 6.3 0
       size 0.2 1 3
+      position -0.0012423973184051596
       frameAppearance Appearance {
         material Material {
         }
@@ -438,7 +442,7 @@ DEF classroom Group {
                 size 6.4 0.02 1.6
               }
             }
-            Transform {
+            Pose {
               translation 0 -0.02 -0.81
               children [
                 Shape {
@@ -478,7 +482,7 @@ DEF classroom Group {
           name "desktop"
           boundingObject Group {
             children [
-              Transform {
+              Pose {
                 translation 0 0 0.81
                 children [
                   Shape {
@@ -488,7 +492,7 @@ DEF classroom Group {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation -0.895 0.05 0.4
                 children [
                   Shape {
@@ -498,7 +502,7 @@ DEF classroom Group {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation 0.895 0.05 0.4
                 children [
                   Shape {
@@ -508,7 +512,7 @@ DEF classroom Group {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation 0 0.345 0.45
                 children [
                   Shape {
@@ -518,7 +522,7 @@ DEF classroom Group {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation -0.64 0.045 0.45
                 children [
                   Shape {
@@ -528,7 +532,7 @@ DEF classroom Group {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation 0.64 0.045 0.45
                 children [
                   Shape {
@@ -542,12 +546,17 @@ DEF classroom Group {
           }
         }
         Laptop {
-          translation -3.22873 5.45465 0.82
-          rotation 0 0 1 -0.785395307179586
+          hidden position_0_0 0.004529428488784134
+          hidden translation_1 -0.0999999999999999 -0.014524362415748723 0.12993540035968235
+          hidden rotation_1 0.5781766515917082 -0.5756636105632363 -0.578206854877646 2.09707684162465
+          translation -3.226192562591697 5.438166675525706 0.8215128190452112
+          rotation 0.010942703244303183 0.02162697834662804 -0.999706222374004 0.7811216373062255
         }
         OfficeChair {
-          translation -3.77001 6.17 0
-          rotation 0 0 1 -1.5707953071795862
+          hidden position_0_0 -0.02534731442883185
+          hidden rotation_1 0 0 -1 0.02534731442882548
+          translation -3.781980131111096 6.176252627688625 0.003443910928025984
+          rotation 0.005991057980275318 0.009506977321335958 -0.9999368603099339 1.5485290459082004
         }
         Solid {
           translation 4.6 4.96 0
@@ -582,26 +591,7 @@ DEF classroom Group {
         }
         Table {
           translation 2.5 3 0
-          size 2.5 1 0.74
-          trayAppearance Appearance {
-            material Material {
-              diffuseColor 1 1 1
-            }
-          }
-          legAppearance Appearance {
-            material Material {
-            }
-            texture ImageTexture {
-              url [
-                "textures/wood002r.jpg"
-              ]
-            }
-          }
-        }
-        Table {
-          translation 2.5 0 0
-          name "table(1)"
-          size 2.5 1 0.74
+          size 2.5 3 0.74
           trayAppearance Appearance {
             material Material {
               diffuseColor 1 1 1
@@ -620,7 +610,7 @@ DEF classroom Group {
         Table {
           translation 2.5 -3 0
           name "table(2)"
-          size 2.5 1 0.74
+          size 2.5 3 0.74
           trayAppearance Appearance {
             material Material {
               diffuseColor 1 1 1
@@ -639,26 +629,7 @@ DEF classroom Group {
         Table {
           translation -2.5 3 0
           name "table(3)"
-          size 2.5 1 0.74
-          trayAppearance Appearance {
-            material Material {
-              diffuseColor 1 1 1
-            }
-          }
-          legAppearance Appearance {
-            material Material {
-            }
-            texture ImageTexture {
-              url [
-                "textures/wood002r.jpg"
-              ]
-            }
-          }
-        }
-        Table {
-          translation -2.5 0 0
-          name "table(4)"
-          size 2.5 1 0.74
+          size 2.5 3 0.74
           trayAppearance Appearance {
             material Material {
               diffuseColor 1 1 1
@@ -677,7 +648,7 @@ DEF classroom Group {
         Table {
           translation -2.5 -3 0
           name "table(5)"
-          size 2.5 1 0.74
+          size 2.5 3 0.74
           trayAppearance Appearance {
             material Material {
               diffuseColor 1 1 1
@@ -694,62 +665,38 @@ DEF classroom Group {
           }
         }
         WoodenChair {
-          translation 2 2.5 0
+          translation 2 1.46 0
           rotation 0 0 1 1.5708
           color 0.321569 0.321569 0.321569
         }
         WoodenChair {
-          translation 3 2.5 0
+          translation 3 1.48 0
           rotation 0 0 1 1.5708
           name "wooden chair(1)"
           color 0.321569 0.321569 0.321569
         }
         WoodenChair {
-          translation 2 -0.5 0
-          rotation 0 0 1 1.5708
-          name "wooden chair(2)"
-          color 0.321569 0.321569 0.321569
-        }
-        WoodenChair {
-          translation 3 -0.5 0
-          rotation 0 0 1 1.5708
-          name "wooden chair(3)"
-          color 0.321569 0.321569 0.321569
-        }
-        WoodenChair {
-          translation 2 -3.5 0
+          translation 2 -4.49 0
           rotation 0 0 1 1.5708
           name "wooden chair(4)"
           color 0.321569 0.321569 0.321569
         }
         WoodenChair {
-          translation 3 -3.5 0
+          translation 3 -4.46 0
           rotation 0 0 1 1.5708
           name "wooden chair(5)"
           color 0.321569 0.321569 0.321569
         }
         WoodenChair {
-          translation -2 2.5 0
+          translation -2 1.5 0
           rotation 0 0 1 1.5708
           name "wooden chair(6)"
           color 0.321569 0.321569 0.321569
         }
         WoodenChair {
-          translation -3 2.5 0
+          translation -3 1.5 0
           rotation 0 0 1 1.5708
           name "wooden chair(7)"
-          color 0.321569 0.321569 0.321569
-        }
-        WoodenChair {
-          translation -2 -0.5 0
-          rotation 0 0 1 1.5708
-          name "wooden chair(8)"
-          color 0.321569 0.321569 0.321569
-        }
-        WoodenChair {
-          translation -3 -0.5 0
-          rotation 0 0 1 1.5708
-          name "wooden chair(9)"
           color 0.321569 0.321569 0.321569
         }
         WoodenChair {
@@ -777,7 +724,7 @@ Robot {
   children [
     DEF base Group {
       children [
-        Transform {
+        Pose {
           translation 0 0 0.1
           children [
             Shape {
@@ -794,7 +741,7 @@ Robot {
             }
           ]
         }
-        Transform {
+        Pose {
           translation 0 0 0.22
           children [
             Shape {
@@ -815,6 +762,7 @@ Robot {
     }
     DEF waist HingeJoint {
       jointParameters HingeJointParameters {
+        position 70.74596078685146
         axis 0 0 1
         anchor 0 0 0.25
       }
@@ -830,10 +778,11 @@ Robot {
       ]
       endPoint Solid {
         translation 0 0 0.25
+        rotation 0 0 -1 4.652262899303582
         children [
           DEF waist Group {
             children [
-              Transform {
+              Pose {
                 rotation 0 0 1 0.3926996938995747
                 children [
                   Shape {
@@ -850,7 +799,7 @@ Robot {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation 0.1 0 0.11
                 children [
                   Shape {
@@ -865,7 +814,7 @@ Robot {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation -0.1 0 0.11
                 children [
                   Shape {
@@ -880,7 +829,7 @@ Robot {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation 0.1 0 0.21
                 rotation 0 1 0 -1.5707953071795862
                 children [
@@ -898,7 +847,7 @@ Robot {
                   }
                 ]
               }
-              Transform {
+              Pose {
                 translation -0.1 0 0.21
                 rotation 0 1 0 -1.5707953071795862
                 children [
@@ -920,6 +869,7 @@ Robot {
           }
           DEF shourlder HingeJoint {
             jointParameters HingeJointParameters {
+              position 10.717305446546096
               anchor 0 0 0.21
             }
             device [
@@ -934,11 +884,11 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.21
-              rotation 1 0 0 0
+              rotation -1 0 0 1.8490651678130774
               children [
                 DEF amr Group {
                   children [
-                    Transform {
+                    Pose {
                       rotation 0 1 0 -1.5707953071795862
                       children [
                         Shape {
@@ -955,7 +905,7 @@ Robot {
                         }
                       ]
                     }
-                    Transform {
+                    Pose {
                       translation 0 0 0.03
                       children [
                         Shape {
@@ -970,7 +920,7 @@ Robot {
                         }
                       ]
                     }
-                    Transform {
+                    Pose {
                       translation 0.07 0 0.28
                       children [
                         Shape {
@@ -985,7 +935,7 @@ Robot {
                         }
                       ]
                     }
-                    Transform {
+                    Pose {
                       translation -0.07 0 0.28
                       children [
                         Shape {
@@ -1000,7 +950,7 @@ Robot {
                         }
                       ]
                     }
-                    Transform {
+                    Pose {
                       translation 0.07 0 0.33
                       rotation 0 1 0 -1.5707953071795862
                       children [
@@ -1018,7 +968,7 @@ Robot {
                         }
                       ]
                     }
-                    Transform {
+                    Pose {
                       translation -0.07 0 0.33
                       rotation 0 1 0 -1.5707953071795862
                       children [
@@ -1040,6 +990,7 @@ Robot {
                 }
                 DEF elbow HingeJoint {
                   jointParameters HingeJointParameters {
+                    position 22.300028971852864
                     anchor 0 0 0.33
                   }
                   device [
@@ -1053,12 +1004,12 @@ Robot {
                     }
                   ]
                   endPoint Solid {
-                    translation 0 0 0.33
-                    rotation 1 0 0 0
+                    translation 5.093703236980213e-12 4.368892126968771e-08 0.32993910316488057
+                    rotation -0.9999999999951819 4.7519980840240864e-07 3.067620509653748e-06 2.8327117383439515
                     children [
                       DEF forearm Group {
                         children [
-                          Transform {
+                          Pose {
                             rotation 0 1 0 -1.5707953071795862
                             children [
                               Shape {
@@ -1075,7 +1026,7 @@ Robot {
                               }
                             ]
                           }
-                          Transform {
+                          Pose {
                             translation 0 0 0.1
                             children [
                               Shape {
@@ -1090,7 +1041,7 @@ Robot {
                               }
                             ]
                           }
-                          Transform {
+                          Pose {
                             translation 0 0 0.3
                             children [
                               Shape {
@@ -1111,6 +1062,7 @@ Robot {
                       }
                       DEF wrist HingeJoint {
                         jointParameters HingeJointParameters {
+                          position 1.593391913850056e-05
                           axis 0 0 1
                           anchor 0 0 0.34
                         }
@@ -1126,10 +1078,11 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0 0 0.34
+                          rotation 0 0 1 1.5933905798212266e-05
                           children [
                             DEF wrist Group {
                               children [
-                                Transform {
+                                Pose {
                                   children [
                                     Shape {
                                       appearance Appearance {
@@ -1145,7 +1098,7 @@ Robot {
                                     }
                                   ]
                                 }
-                                Transform {
+                                Pose {
                                   translation 0.04 0 0.0225
                                   children [
                                     Shape {
@@ -1160,7 +1113,7 @@ Robot {
                                     }
                                   ]
                                 }
-                                Transform {
+                                Pose {
                                   translation -0.04 0 0.0225
                                   children [
                                     Shape {
@@ -1175,7 +1128,7 @@ Robot {
                                     }
                                   ]
                                 }
-                                Transform {
+                                Pose {
                                   translation 0.04 0 0.035
                                   rotation 0 1 0 -1.5707953071795862
                                   children [
@@ -1193,7 +1146,7 @@ Robot {
                                     }
                                   ]
                                 }
-                                Transform {
+                                Pose {
                                   translation -0.04 0 0.035
                                   rotation 0 1 0 -1.5707953071795862
                                   children [
@@ -1215,6 +1168,7 @@ Robot {
                             }
                             DEF pitch HingeJoint {
                               jointParameters HingeJointParameters {
+                                position -0.0003505420259690176
                                 anchor 0 0 0.035
                               }
                               device [
@@ -1229,11 +1183,11 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0 0 0.035
-                                rotation 1 0 0 0
+                                rotation -1 0 0 0.00035054202608782745
                                 children [
                                   DEF pitch Group {
                                     children [
-                                      Transform {
+                                      Pose {
                                         rotation 0 1 0 -1.5707953071795862
                                         children [
                                           Shape {
@@ -1250,7 +1204,7 @@ Robot {
                                           }
                                         ]
                                       }
-                                      Transform {
+                                      Pose {
                                         rotation 0 1 0 -1.5707953071795862
                                         children [
                                           Shape {
@@ -1267,7 +1221,7 @@ Robot {
                                           }
                                         ]
                                       }
-                                      Transform {
+                                      Pose {
                                         translation 0 0 0.015
                                         children [
                                           Shape {
@@ -1282,7 +1236,7 @@ Robot {
                                           }
                                         ]
                                       }
-                                      Transform {
+                                      Pose {
                                         translation 0 0 0.035
                                         children [
                                           Shape {
@@ -1297,7 +1251,7 @@ Robot {
                                           }
                                         ]
                                       }
-                                      Transform {
+                                      Pose {
                                         translation 0 0.025 0.06
                                         children [
                                           Shape {
@@ -1312,7 +1266,7 @@ Robot {
                                           }
                                         ]
                                       }
-                                      Transform {
+                                      Pose {
                                         translation 0 -0.025 0.06
                                         children [
                                           Shape {
@@ -1331,6 +1285,7 @@ Robot {
                                   }
                                   DEF right_a HingeJoint {
                                     jointParameters HingeJointParameters {
+                                      position -8.830047483502241e-07
                                       axis 0 1 0
                                       anchor 0.02 0 0.065
                                     }
@@ -1346,11 +1301,11 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.02 0 0.065
-                                      rotation 0 1 0 0
+                                      rotation 0 -1 0 8.83074545265983e-07
                                       children [
                                         DEF phalanx Group {
                                           children [
-                                            Transform {
+                                            Pose {
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
                                                 Shape {
@@ -1367,7 +1322,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.05
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
@@ -1385,7 +1340,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.025
                                               children [
                                                 Shape {
@@ -1404,16 +1359,17 @@ Robot {
                                         }
                                         DEF r_finger HingeJoint {
                                           jointParameters HingeJointParameters {
+                                            position 0.0018223584325865417
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
                                           endPoint Solid {
                                             translation 0 0 0.05
-                                            rotation 0 1 0 0
+                                            rotation 0 1 0 0.0018223584325671221
                                             children [
                                               DEF rg_finger Group {
                                                 children [
-                                                  Transform {
+                                                  Pose {
                                                     translation 0.02 0.025 0
                                                     children [
                                                       Shape {
@@ -1428,7 +1384,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation 0.02 -0.025 0
                                                     children [
                                                       Shape {
@@ -1443,7 +1399,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation 0.01 0 0.056
                                                     children [
                                                       Shape {
@@ -1458,7 +1414,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation 0.0306 0 0.0678
                                                     rotation 0 1 0 -0.32
                                                     children [
@@ -1474,7 +1430,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation 0.04 0 0.026
                                                     children [
                                                       Shape {
@@ -1489,7 +1445,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation 0 0 0.111
                                                     children [
                                                       Shape {
@@ -1504,7 +1460,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation 0.01 0 0.101
                                                     rotation 1 0 0 -1.5707953071795862
                                                     children [
@@ -1525,8 +1481,8 @@ Robot {
                                                 ]
                                               }
                                               TouchSensor {
-                                                translation 0.002 0 0.069
-                                                rotation 0 0 1 3.14159
+                                                translation 0.0018287895732926884 4.1724420940303375e-05 0.0689933923760524
+                                                rotation 4.836666067657795e-10 7.324132134118649e-10 1 3.1415900005715405
                                                 name "finger_sensor"
                                                 boundingObject Shape {
                                                   geometry Box {
@@ -1539,22 +1495,29 @@ Robot {
                                                   0 0 0
                                                   0.01 1 0
                                                 ]
+                                                linearVelocity -0.1369319520108568 0.23990469339713802 -0.24381635744972333
+                                                angularVelocity -0.04372164417373131 0.9992438245822989 1.0027258222137514
                                               }
                                             ]
                                             name "right_finger"
                                             boundingObject USE rg_finger
                                             physics Physics {
                                             }
+                                            linearVelocity -0.15048382420022344 0.23248860902947358 -0.23704316960006078
+                                            angularVelocity -0.04372164419933686 0.9992438246761148 1.0027258219011512
                                           }
                                         }
                                       ]
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
+                                      linearVelocity -0.1296355464879352 0.14528058771995872 -0.1496309844719512
+                                      angularVelocity -0.04372490134624678 0.9992447296738154 1.002496974309023
                                     }
                                   }
                                   DEF left_a HingeJoint {
                                     jointParameters HingeJointParameters {
+                                      position -1.1167062822831942e-06
                                       axis 0 1 0
                                       anchor -0.02 0 0.065
                                     }
@@ -1568,11 +1531,11 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation -0.02 0 0.065
-                                      rotation 0 1 0 0
+                                      rotation 0 -1 0 1.1166926619527005e-06
                                       children [
                                         Group {
                                           children [
-                                            Transform {
+                                            Pose {
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
                                                 Shape {
@@ -1589,7 +1552,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.05
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
@@ -1607,7 +1570,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.025
                                               children [
                                                 Shape {
@@ -1626,16 +1589,17 @@ Robot {
                                         }
                                         DEF l_finger HingeJoint {
                                           jointParameters HingeJointParameters {
+                                            position -0.00020025358026924388
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
                                           endPoint Solid {
                                             translation 0 0 0.05
-                                            rotation 0 1 0 0
+                                            rotation 0 -1 0 0.00020025358019100457
                                             children [
                                               DEF lf_finger Group {
                                                 children [
-                                                  Transform {
+                                                  Pose {
                                                     translation -0.02 0.025 0
                                                     children [
                                                       Shape {
@@ -1650,7 +1614,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation -0.02 -0.025 0
                                                     children [
                                                       Shape {
@@ -1665,7 +1629,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation -0.01 0 0.056
                                                     children [
                                                       Shape {
@@ -1680,7 +1644,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation -0.04 0 0.026
                                                     children [
                                                       Shape {
@@ -1695,7 +1659,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation 0 0 0.111
                                                     children [
                                                       Shape {
@@ -1710,7 +1674,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation -0.0306 0 0.0678
                                                     rotation 0 1 0 0.32
                                                     children [
@@ -1726,7 +1690,7 @@ Robot {
                                                       }
                                                     ]
                                                   }
-                                                  Transform {
+                                                  Pose {
                                                     translation -0.01 0 0.101
                                                     rotation 1 0 0 -1.5707953071795862
                                                     children [
@@ -1751,6 +1715,8 @@ Robot {
                                             boundingObject USE lf_finger
                                             physics Physics {
                                             }
+                                            linearVelocity -0.07868211351577814 0.23561449801115866 -0.2370678380960036
+                                            angularVelocity -0.04372506368702586 0.9992447831709331 1.0024816700736514
                                           }
                                         }
                                       ]
@@ -1758,20 +1724,23 @@ Robot {
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
+                                      linearVelocity -0.08958051256392438 0.14701848112058732 -0.1496304154576572
+                                      angularVelocity -0.04372489772692229 0.9992447077246703 1.0024969455185515
                                     }
                                   }
                                   DEF right_p HingeJoint {
                                     jointParameters HingeJointParameters {
+                                      position 0.00013935016511627541
                                       axis 0 1 0
                                       anchor 0.06 0 0.065
                                     }
                                     endPoint Solid {
                                       translation 0.06 0 0.065
-                                      rotation 0 1 0 0
+                                      rotation 0 0.9999999999999999 0 0.0001393501654779117
                                       children [
                                         DEF phalanx Group {
                                           children [
-                                            Transform {
+                                            Pose {
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
                                                 Shape {
@@ -1788,7 +1757,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.05
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
@@ -1806,7 +1775,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.025
                                               children [
                                                 Shape {
@@ -1825,6 +1794,7 @@ Robot {
                                         }
                                         HingeJoint {
                                           jointParameters HingeJointParameters {
+                                            position 0.0016826710303975865
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
@@ -1837,20 +1807,23 @@ Robot {
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
+                                      linearVelocity -0.16970054112667374 0.14354213574384245 -0.14963111697035958
+                                      angularVelocity -0.04372495129511834 0.9992447295861832 1.0024881269268573
                                     }
                                   }
                                   DEF left_p HingeJoint {
                                     jointParameters HingeJointParameters {
+                                      position 0.0001044042266318034
                                       axis 0 1 0
                                       anchor -0.06 0 0.065
                                     }
                                     endPoint Solid {
                                       translation -0.06 0 0.065
-                                      rotation 0 1 0 0
+                                      rotation 0 1 0 0.00010440422639374098
                                       children [
                                         Group {
                                           children [
-                                            Transform {
+                                            Pose {
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
                                                 Shape {
@@ -1867,7 +1840,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.05
                                               rotation 1 0 0 -1.5707953071795862
                                               children [
@@ -1885,7 +1858,7 @@ Robot {
                                                 }
                                               ]
                                             }
-                                            Transform {
+                                            Pose {
                                               translation 0 0 0.025
                                               children [
                                                 Shape {
@@ -1904,6 +1877,7 @@ Robot {
                                         }
                                         HingeJoint {
                                           jointParameters HingeJointParameters {
+                                            position -0.000306200368134379
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
@@ -1916,6 +1890,8 @@ Robot {
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
+                                      linearVelocity -0.04952628434557001 0.14875662174104687 -0.14963035737725608
+                                      angularVelocity -0.04372468464343446 0.9992446481175667 1.00251038569641
                                     }
                                   }
                                   Camera {
@@ -1930,30 +1906,40 @@ Robot {
                                 boundingObject USE pitch
                                 physics Physics {
                                 }
+                                linearVelocity -0.10627621468957672 0.08664648865051446 -0.09044783840454577
+                                angularVelocity -0.043724893669882206 0.9992446607350493 1.0024969128168717
                               }
                             }
                           ]
                           boundingObject USE wrist
                           physics Physics {
                           }
+                          linearVelocity -0.10295292444725464 0.027496812211527007 -0.03161765164358167
+                          angularVelocity -0.043724044369823856 0.9992250253846816 1.0024967021939846
                         }
                       }
                     ]
                     boundingObject USE forearm
                     physics Physics {
                     }
+                    linearVelocity -0.08972548852540267 -0.20718785121561492 0.20180297080262158
+                    angularVelocity -0.04372377603299746 0.9992245704389185 1.0024965447682272
                   }
                 }
               ]
               boundingObject USE amr
               physics Physics {
               }
+              linearVelocity -0.012369533289774656 -0.04790116278667261 0.04700661717594946
+              angularVelocity -0.04371922671284425 0.9991189063559979 1.002495608493181
             }
           }
         ]
         boundingObject USE waist
         physics Physics {
         }
+        linearVelocity -3.897482939493806e-06 -1.8390728915087495e-06 5.14262301298413e-07
+        angularVelocity -1.2763108647337435e-06 -8.460739440153583e-06 0.9999990750484217
       }
     }
   ]
@@ -1964,7 +1950,8 @@ Robot {
 DEF boxes Group {
   children [
     Solid {
-      translation 2.5 3.25 0.78
+      translation 2.5 3.25 0.779799091230488
+      rotation 0.3846465341237625 0.7692930682473914 0.5101325503563674 8.456092097297957e-17
       children [
         DEF box Shape {
           appearance Appearance {
@@ -1981,10 +1968,12 @@ DEF boxes Group {
       boundingObject USE box
       physics Physics {
       }
+      linearVelocity 4.230614339323594e-17 5.826989031667241e-18 -2.384860086105875e-10
+      angularVelocity 6.902532920683853e-31 8.131516293641272e-16 -8.138298444493992e-17
     }
     Solid {
-      translation 2.9 3.1 0.78
-      rotation 0 0 1 -0.523595307179586
+      translation 2.9 3.1 0.779799091230488
+      rotation -2.786441512335274e-16 -1.982617475645793e-16 -1 0.5235953071795861
       children [
         DEF box Shape {
           appearance Appearance {
@@ -2001,10 +1990,12 @@ DEF boxes Group {
       boundingObject USE box
       physics Physics {
       }
+      linearVelocity -3.918989885683034e-17 1.1140383668225325e-16 -2.3848595309943627e-10
+      angularVelocity -4.675621868843742e-15 -1.1180834903756816e-15 3.673470133761545e-16
     }
     Solid {
-      translation 2.1 3.1 0.78
-      rotation 0 0 1 0.523599
+      translation 2.1 3.1 0.779799091230488
+      rotation -1.215910942578228e-16 2.0171572330429685e-16 1 0.523599
       children [
         DEF box Shape {
           appearance Appearance {
@@ -2021,6 +2012,8 @@ DEF boxes Group {
       boundingObject USE box
       physics Physics {
       }
+      linearVelocity -2.0309001138732672e-17 -2.5427082854783332e-17 -2.3848595309943627e-10
+      angularVelocity 4.065758146820655e-16 -1.4230153513872234e-15 5.325303740538839e-16
     }
   ]
 }
