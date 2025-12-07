@@ -1,9 +1,12 @@
 from controller import Robot
 import math
-import time
 import numpy as np
-import cv2  # For displaying the image
+import cv2  
+import random
 
+# -----------------------------------------------------------------------------------------------------
+# INITIALIZATION (DO NOT MODIFY!)
+# -----------------------------------------------------------------------------------------------------
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
 
@@ -39,14 +42,19 @@ for s in sensors.values():
 camera = robot.getDevice('camera')
 camera.enable(timestep * 2)
 
+# Order of placement
+order = random.randint(1,6)
+
 # -----------------------------------------------------------------------------------------------------
 # FUNCTION participants must complete
 # -----------------------------------------------------------------------------------------------------
-def arm_controller(sensor_values, image):
+def arm_controller(sensor_values, image, order):
     """
-    sensor_values = dict containing all sensor readings
-
-    Should return a dict:
+    TODO: process image and implement arm control logic here.
+    You are free to import classes, define new functions, and 
+    modify the code as you wish but the desired format must stay
+    the same; meaning after any process, you should return this dict
+    at the end of current function:
     {
         "waist": vel,
         "shoulder": vel,
@@ -55,10 +63,18 @@ def arm_controller(sensor_values, image):
         "pitch": vel,
         "claw": vel
     }
+    
+    You should place the boxes on the matching surface in respect to value of 'order':
+    1 : blue, green, black
+    2 : blue, black, green
+    3 : green, blue, black
+    4 : green, black, blue
+    5 : black, blue, green
+    6 : black, green, blue
     """
-
-    # TODO: process image and implement arm control logic here
+    
     print(sensor_values)
+    print('order: ', order)
     
     if image is not None:
         width = camera.getWidth()
@@ -86,22 +102,22 @@ def arm_controller(sensor_values, image):
     }
 
 # -----------------------------------------------------------------------------------------------------
-# MAIN LOOP
+# MAIN LOOP (DO NOT MODIFY!)
 # -----------------------------------------------------------------------------------------------------
 while robot.step(timestep) != -1:
-
+    
     # read all sensors
     sensor_values = {name: s.getValue() for name, s in sensors.items()}
 
     # get camera frame (if needed)
     image = camera.getImage()
-
+    
+    
     # call the controller
-    velocities = arm_controller(sensor_values, image)
+    velocities = arm_controller(sensor_values, image, order)
 
     # set returned velocities to motors
     for joint, vel in velocities.items():
         motors[joint].setVelocity(vel)
 
-# Close all OpenCV windows when the simulation ends
 cv2.destroyAllWindows()
