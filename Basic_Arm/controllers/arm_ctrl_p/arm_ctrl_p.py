@@ -20,6 +20,25 @@ motors = {
     "claw": robot.getDevice('phalanx_motor::right')
 }
 
+# # ---------------- INITIAL POSITION OF JOINTS ----------------
+# initial_positions = {
+#     "waist": 1.08,
+#     "shoulder": 0.16,
+#     "elbow": 0.06,
+#     "wrist": 0.0,
+#     "pitch": -0.46,
+#     "claw": 0.0
+# }
+
+# # Set initial positions
+# for joint, pos in initial_positions.items():
+#     motors[joint].setPosition(pos)
+#     motors[joint].setVelocity(1.0)
+
+# # Let the robot reach initial pose
+# for _ in range(60):     # ~2 seconds
+#     robot.step(timestep)
+
 for m in motors.values():
     m.setPosition(float('inf'))
     m.setVelocity(0)
@@ -73,22 +92,9 @@ def arm_controller(sensor_values, image, order):
     6 : black, green, blue
     """
     
-    print(sensor_values)
-    print('order: ', order)
-    
     if image is not None:
-        width = camera.getWidth()
-        height = camera.getHeight()
-        
-        # Convert image to a numpy array (BGRA format)
-        img_data = np.frombuffer(image, dtype=np.uint8)
-        img_data = img_data.reshape((height, width, 4))  # Reshape to (height, width, 4)
-        
-        # Convert BGRA to BGR by removing the alpha channel (last channel)
-        bgr_image = img_data[:, :, :3]
-
         # Show the image using OpenCV
-        cv2.imshow("Camera Image", bgr_image)
+        cv2.imshow("Camera Image", image)
         cv2.waitKey(1)  
         
     #Return speed of each joint  
@@ -112,9 +118,22 @@ while robot.step(timestep) != -1:
     # get camera frame (if needed)
     image = camera.getImage()
     
+    print(sensor_values)
+    print('order: ', order)
+    if image is not None:
+        width = camera.getWidth()
+        height = camera.getHeight()
+        
+        # Convert image to a numpy array (BGRA format)
+        img_data = np.frombuffer(image, dtype=np.uint8)
+        img_data = img_data.reshape((height, width, 4))  # Reshape to (height, width, 4)
+        
+        # Convert BGRA to BGR by removing the alpha channel (last channel)
+        bgr_image = img_data[:, :, :3]
+
     
     # call the controller
-    velocities = arm_controller(sensor_values, image, order)
+    velocities = arm_controller(sensor_values, bgr_image, order)
 
     # set returned velocities to motors
     for joint, vel in velocities.items():

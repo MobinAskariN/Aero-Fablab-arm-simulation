@@ -872,7 +872,7 @@ Robot {
     }
     DEF waist HingeJoint {
       jointParameters HingeJointParameters {
-        position 127.32863873831329
+        position 0
         axis 0 0 1
         anchor 0 0 0.25
       }
@@ -979,7 +979,7 @@ Robot {
           }
           DEF shourlder HingeJoint {
             jointParameters HingeJointParameters {
-              position 18.306623810413765
+              position 0
               anchor 0 0 0.21
             }
             device [
@@ -1100,7 +1100,7 @@ Robot {
                 }
                 DEF elbow HingeJoint {
                   jointParameters HingeJointParameters {
-                    position 16.910083347060038
+                    position 0
                     anchor 0 0 0.33
                   }
                   device [
@@ -1172,7 +1172,7 @@ Robot {
                       }
                       DEF wrist HingeJoint {
                         jointParameters HingeJointParameters {
-                          position -0.0006291901592629834
+                          position 0
                           axis 0 0 1
                           anchor 0 0 0.34
                         }
@@ -1278,7 +1278,7 @@ Robot {
                             }
                             DEF pitch HingeJoint {
                               jointParameters HingeJointParameters {
-                                position -0.46142792373548946
+                                position 0
                                 anchor 0 0 0.035
                               }
                               device [
@@ -1395,7 +1395,7 @@ Robot {
                                   }
                                   DEF right_a HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position -1.5446528090756075e-06
+                                      position 0
                                       axis 0 1 0
                                       anchor 0.02 0 0.065
                                     }
@@ -1469,7 +1469,7 @@ Robot {
                                         }
                                         DEF r_finger HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 0.002518708103082693
+                                            position 0
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
@@ -1627,7 +1627,7 @@ Robot {
                                   }
                                   DEF left_a HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 9.268069327476558e-06
+                                      position 0
                                       axis 0 1 0
                                       anchor -0.02 0 0.065
                                     }
@@ -1699,7 +1699,7 @@ Robot {
                                         }
                                         DEF l_finger HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position -0.0015379090285936455
+                                            position 0
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
@@ -1840,7 +1840,7 @@ Robot {
                                   }
                                   DEF right_p HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 0.0001584901175813541
+                                      position 0
                                       axis 0 1 0
                                       anchor 0.06 0 0.065
                                     }
@@ -1904,7 +1904,7 @@ Robot {
                                         }
                                         HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 0.002359440785846757
+                                            position 0
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
@@ -1923,7 +1923,7 @@ Robot {
                                   }
                                   DEF left_p HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position -0.00027565260491497936
+                                      position 0
                                       axis 0 1 0
                                       anchor -0.06 0 0.065
                                     }
@@ -1987,7 +1987,7 @@ Robot {
                                         }
                                         HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position -0.0012539822206902446
+                                            position 0
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
