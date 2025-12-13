@@ -3,12 +3,19 @@ import math
 import numpy as np
 import cv2  
 import random
+from controller import Keyboard
+
+
 
 # -----------------------------------------------------------------------------------------------------
 # INITIALIZATION (DO NOT MODIFY!)
 # -----------------------------------------------------------------------------------------------------
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
+
+keyboard = Keyboard()
+keyboard.enable(timestep)
+
 
 # Initialize Motors
 motors = {
@@ -107,6 +114,53 @@ def arm_controller(sensor_values, image, order):
         "claw": 0.0
     }
 
+def keyboard_arm_controller():
+    SPEED = 0.5  # rad/s
+
+    velocities = {
+        "waist": 0.0,
+        "shoulder": 0.0,
+        "elbow": 0.0,
+        "wrist": 0.0,
+        "pitch": 0.0,
+        "claw": 0.0
+    }
+
+    key = keyboard.getKey()
+    print(key)
+
+    if key == ord('Q'):
+        velocities["waist"] = +SPEED
+    elif key == ord('A'):
+        velocities["waist"] = -SPEED
+
+    elif key == ord('W'):
+        velocities["shoulder"] = +SPEED
+    elif key == ord('S'):
+        velocities["shoulder"] = -SPEED
+
+    elif key == ord('E'):
+        velocities["elbow"] = +SPEED
+    elif key == ord('D'):
+        velocities["elbow"] = -SPEED
+
+    elif key == ord('R'):
+        velocities["wrist"] = +SPEED
+    elif key == ord('F'):
+        velocities["wrist"] = -SPEED
+
+    elif key == ord('T'):
+        velocities["pitch"] = +SPEED
+    elif key == ord('G'):
+        velocities["pitch"] = -SPEED
+
+    elif key == ord('Y'):
+        velocities["claw"] = +SPEED
+    elif key == ord('H'):
+        velocities["claw"] = -SPEED
+
+    return velocities
+
 # -----------------------------------------------------------------------------------------------------
 # MAIN LOOP (DO NOT MODIFY!)
 # -----------------------------------------------------------------------------------------------------
@@ -132,8 +186,12 @@ while robot.step(timestep) != -1:
         bgr_image = img_data[:, :, :3]
 
     
-    # call the controller
-    velocities = arm_controller(sensor_values, bgr_image, order)
+    # # call the controller
+    # velocities = arm_controller(sensor_values, bgr_image, order)
+    # manuall controller
+    velocities = keyboard_arm_controller()
+
+
 
     # set returned velocities to motors
     for joint, vel in velocities.items():
