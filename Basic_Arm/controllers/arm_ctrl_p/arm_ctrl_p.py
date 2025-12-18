@@ -48,14 +48,13 @@ for s in sensors.values():
 camera = robot.getDevice('camera')
 camera.enable(timestep * 2)
 
-# Order of placement
-order = random.randint(1,6)
-print('order: ', order)
+#homing
+homing_done = False
 
 # -----------------------------------------------------------------------------------------------------
 # FUNCTION participants must complete
 # -----------------------------------------------------------------------------------------------------
-def arm_controller(sensor_values, image, order):
+def arm_controller(sensor_values, image):
     """
     TODO: process image and implement arm control logic here.
     You are free to import classes, define new functions, and 
@@ -72,13 +71,6 @@ def arm_controller(sensor_values, image, order):
         "claw": vel
     }
     
-    You should place the boxes on the matching surface in respect to value of 'order':
-    1 : blue, green, black
-    2 : blue, black, green
-    3 : green, blue, black
-    4 : green, black, blue
-    5 : black, blue, green
-    6 : black, green, blue
     """
     
     print(sensor_values)
@@ -156,18 +148,55 @@ def keyboard_arm_controller(sensor_values, image):
     return velocities
 
 # -----------------------------------------------------------------------------------------------------
+# Move arm to initial pose
+# -----------------------------------------------------------------------------------------------------
+def move_arm_to_initial(sensor_values,
+                         targets=None,
+                         kp=1.5,
+                         tolerance=0.01,
+                         max_speed=0.6):
+
+
+    if targets is None:
+        targets = {
+            "waist": 0.0,
+            "shoulder": 0.0,
+            "elbow": 0.0,
+            "wrist": 0.0,
+            "pitch": 0.0,
+            "claw": 0.0
+        }
+
+    velocities = {}
+
+    for joint, target in targets.items():
+
+        sensor_key = "fingers" if joint == "claw" else joint
+        current = sensor_values[sensor_key]
+        error = target - current
+
+        if abs(error) < tolerance:
+            velocities[joint] = 0.0
+        else:
+            vel = kp * error
+
+            vel = max(min(vel, max_speed), -max_speed)
+            velocities[joint] = vel
+
+    return velocities
+
+# -----------------------------------------------------------------------------------------------------
 # MAIN LOOP (DO NOT MODIFY!)
 # -----------------------------------------------------------------------------------------------------
 while robot.step(timestep) != -1:
     
     sensor_values = {name: s.getValue() for name, s in sensors.items()}
-    
+
     for name, s in sensor_values.items():
         if abs(s) < 0.0001:
             sensor_values[name] = 0.0
         else:
             sensor_values[name] = round(s, 3)
-                    
     image = camera.getImage()
     
     if image is not None:
@@ -179,12 +208,20 @@ while robot.step(timestep) != -1:
         
         bgr_image = img_data[:, :, :3]
 
-    
-    # call the controller
-    # velocities = arm_controller(sensor_values, bgr_image, order)
+    # homing
+    if not homing_done:
+        velocities = move_arm_to_initial(sensor_values)
 
-    # manuall controller
-    velocities = keyboard_arm_controller(sensor_values, bgr_image)
+        if all(abs(v) < 1e-3 for v in velocities.values()):
+            homing_done = True
+            print("Homing completed.")
+    else:
+   
+        # call the controller
+        # velocities = arm_controller(sensor_values, bgr_image)
+
+        # manuall controller
+        velocities = keyboard_arm_controller(sensor_values, bgr_image)
 
     for joint, vel in velocities.items():
         motors[joint].setVelocity(vel)
