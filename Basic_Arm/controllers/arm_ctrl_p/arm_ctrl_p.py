@@ -70,7 +70,6 @@ def arm_controller(sensor_values, image):
         "pitch": vel,
         "claw": vel
     }
-    
     """
     
     print(sensor_values)
@@ -217,11 +216,11 @@ while robot.step(timestep) != -1:
             print("Homing completed.")
     else:
    
-        # call the controller
-        # velocities = arm_controller(sensor_values, bgr_image)
+        # call the participant's controller
+        velocities = arm_controller(sensor_values, bgr_image)
 
-        # manuall controller
-        velocities = keyboard_arm_controller(sensor_values, bgr_image)
+        # call the manuall controller
+        # velocities = keyboard_arm_controller(sensor_values, bgr_image)
 
     for joint, vel in velocities.items():
         motors[joint].setVelocity(vel)
