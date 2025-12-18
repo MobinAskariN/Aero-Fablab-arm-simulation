@@ -186,8 +186,6 @@ while robot.step(timestep) != -1:
     # manuall controller
     velocities = keyboard_arm_controller(sensor_values, bgr_image)
 
-
-
     for joint, vel in velocities.items():
         motors[joint].setVelocity(vel)
 
