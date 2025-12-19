@@ -8,7 +8,6 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/project
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/apartment_structure/protos/Ceiling.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/tables/protos/Table.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/chairs/protos/WoodenChair.proto"
-EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/paintings/protos/LandscapePainting.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/computers/protos/Laptop.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/objects/plants/protos/PottedTree.proto"
 EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023a/projects/appearances/protos/Roughcast.proto"
@@ -21,8 +20,8 @@ WorldInfo {
   title "Basic Arm V1"
 }
 Viewpoint {
-  orientation -0.08182395513930972 0.9868861068868637 0.1391425614219096 1.0747582884649844
-  position 0.8491218530710012 2.8881969277626625 3.3066961118529186
+  orientation 0.03711410634539736 0.9951433007403105 -0.0911721125227581 0.7765915035791171
+  position -2.5129730064289406 3.1259839825360807 5.3887623573210215
 }
 DEF classroom Group {
   children [
@@ -43,11 +42,11 @@ DEF classroom Group {
       }
     }
     Door {
-      hidden translation_5 0.002655909128400219 0.0005162656368562502 1.7763568394002505e-15
-      hidden rotation_5 0 0 -1 0.00348422749514734
+      hidden translation_5 0.00272702567857544 0.0005382960756373234 1.7763568394002505e-15
+      hidden rotation_5 0 0 -1 0.003633780534304483
       translation 4.9 6.3 0
       size 0.2 1 3
-      position -0.004081857304115274
+      position -0.004231410343248191
       frameAppearance Appearance {
         material Material {
         }
@@ -556,11 +555,11 @@ DEF classroom Group {
           }
         }
         Laptop {
-          hidden position_0_0 0.004513899208301393
-          hidden translation_1 -0.09999999999999981 -0.014522565126503503 0.1299356258986247
-          hidden rotation_1 0.5781736764720736 -0.5756695875876082 -0.5782038790612521 2.0970678629803556
-          translation -3.2262556558189117 5.4382161426941344 0.8188661276691663
-          rotation -0.001241001868614154 -0.0031077328015084093 -0.9999944009399235 0.7808369447630372
+          hidden position_0_0 0.004512408979951783
+          hidden translation_1 -0.09999999999999978 -0.0145223926539766 0.1299356475404344
+          hidden rotation_1 0.5781733909697664 -0.5756701611577282 -0.5782035934920817 2.0970670013697643
+          translation -3.2262556553373156 5.438216142223482 0.8188663009924501
+          rotation -0.0012407967872616105 -0.0031072490183670512 -0.9999944026977703 0.7808369437716112
         }
         Solid {
           translation 4.6 4.96 0
@@ -577,21 +576,6 @@ DEF classroom Group {
             }
           ]
           name "trash"
-        }
-        LandscapePainting {
-          translation -3.6 6.79 1.7
-          rotation 0 0 1 -1.5707953071795862
-          textureUrl [
-            "textures/Mini Sumo Robot V1_11.jpg"
-          ]
-        }
-        LandscapePainting {
-          translation -4.78 5.91 1.7
-          rotation 0 0 1 1.01503e-06
-          name "landscape painting(1)"
-          textureUrl [
-            "textures/DigiArm V3.jpg"
-          ]
         }
         Table {
           translation 2.5 3 0
@@ -617,8 +601,8 @@ DEF classroom Group {
           }
         }
         Solid {
-          translation 2.096287428285976 2.9340723609747124 0.7797990162686823
-          rotation -0.008041242875719844 0.9999676686837364 4.7640046964116435e-07 -3.141592011792482
+          translation 2.0962874023082136 2.9340723988794224 0.7797991221953883
+          rotation -0.008041242875720764 0.9999676686838499 4.778470641490985e-13 -3.141592653589149
           children [
             DEF box Shape {
               appearance Appearance {
@@ -638,12 +622,12 @@ DEF classroom Group {
           recognitionColors [
             1 1 1
           ]
-          linearVelocity -2.020976085766631e-07 2.9488495052997296e-07 5.861348259528221e-07
-          angularVelocity -7.372050350710433e-06 -5.05238990200326e-06 5.312493658102132e-17
+          linearVelocity -2.026981381645325e-13 2.956890454998107e-13 -2.424549195855245e-07
+          angularVelocity -7.392158174641578e-12 -5.068170817918444e-12 -1.5793412921859053e-16
         }
         Solid {
-          translation 2.85749 2.97274 0.7797990912000002
-          rotation 9.43844214857161e-16 4.339034053882037e-15 1 0.024545307179586244
+          translation 2.85749 2.97274 0.7797991221954584
+          rotation -1.2283213512285942e-15 1.2480718240884504e-16 1 0.024545307179586258
           children [
             DEF box Shape {
               appearance Appearance {
@@ -663,12 +647,12 @@ DEF classroom Group {
           recognitionColors [
             1 1 1
           ]
-          linearVelocity -9.065907039742598e-17 -3.986408020848006e-17 -1.6653344839981758e-15
-          angularVelocity 1.2197274440461915e-15 -2.0328790734103192e-15 -2.3090261677065795e-16
+          linearVelocity -5.197586931081328e-17 -1.0788873057911509e-16 -2.424554684797879e-07
+          angularVelocity 2.6427427954334163e-15 -1.8295911660692883e-15 -1.274941305362114e-16
         }
         Solid {
-          translation 1.82113 3.00923 0.7797990912000002
-          rotation 2.2507180892251625e-14 6.992411376203503e-14 0.9999999999999999 0.0013578942298652817
+          translation 1.82113 3.00923 0.7797991221954584
+          rotation -1.590918660741748e-14 -6.418839619595912e-14 1 0.0013578942298650646
           children [
             DEF box Shape {
               appearance Appearance {
@@ -685,12 +669,12 @@ DEF classroom Group {
           boundingObject USE box
           physics Physics {
           }
-          linearVelocity -1.818721590421047e-18 8.268459293195706e-18 -1.7208456352294336e-15
-          angularVelocity -4.0657581468206446e-16 -4.0657581468206554e-16 -5.183983665959235e-17
+          linearVelocity -7.149984338485048e-17 -1.2180768648973152e-17 -2.424554684797879e-07
+          angularVelocity 6.098637220230959e-16 -1.423015351387225e-15 -1.3999583386532293e-16
         }
         Solid {
-          translation 3.016779999457792 3.4274399994572464 0.7797990912000002
-          rotation -1.3284115509481136e-16 -8.093211551178313e-18 -1 1.0466953071795864
+          translation 3.016779999457792 3.4274399994572464 0.7797991221954584
+          rotation -1.7252024583111397e-16 2.1607607496029728e-17 -1 1.0466953071795864
           children [
             DEF box Shape {
               appearance Appearance {
@@ -707,12 +691,12 @@ DEF classroom Group {
           boundingObject USE box
           physics Physics {
           }
-          linearVelocity -1.5840119793070773e-17 4.4170900006565316e-17 -1.7208456352294336e-15
-          angularVelocity -1.8295911660692903e-15 -2.032879073410307e-16 -3.3148564488477376e-17
+          linearVelocity 4.1831968417341076e-17 4.192679249718581e-17 -2.424554684797879e-07
+          angularVelocity -1.6263032587282563e-15 1.524659305057741e-15 -1.96361845687564e-16
         }
         Solid {
-          translation 2.6169700000478624 3.6826700000009303 0.7797990912000002
-          rotation -5.796124131275154e-17 1.443212132815488e-16 -1 0.19921530717958633
+          translation 2.6169700000478624 3.6826700000009303 0.7797991221954584
+          rotation 1.0474928927552259e-16 -1.6812952418290435e-16 -1 0.1992153071795864
           children [
             DEF box Shape {
               appearance Appearance {
@@ -729,12 +713,12 @@ DEF classroom Group {
           boundingObject USE box
           physics Physics {
           }
-          linearVelocity -4.138078666362286e-17 -3.710178534324324e-17 -1.7208456352294336e-15
-          angularVelocity 4.0657581468206436e-16 -8.131516293641272e-16 -1.6101844308388806e-16
+          linearVelocity -4.538160757897044e-17 -3.217664166655698e-18 -2.424554684797879e-07
+          angularVelocity -2.0328790734103228e-16 -1.2197274440461933e-15 1.6975149134458202e-18
         }
         Solid {
-          translation 1.9605599885231468 2.8102014371498836 0.7797990911999998
-          rotation 3.343700103558417e-14 1.0898209550034692e-13 1 0.0005063670126350622
+          translation 1.9605599885231468 2.8102014371498836 0.7797991221954584
+          rotation -6.932465961435947e-14 1.6039545189048426e-13 1 0.0005063670126350886
           children [
             DEF box Shape {
               appearance Appearance {
@@ -751,12 +735,12 @@ DEF classroom Group {
           boundingObject USE box
           physics Physics {
           }
-          linearVelocity 8.059782398991123e-18 -2.075926078293663e-17 1.1102230246251441e-15
-          angularVelocity 1.2197274440461925e-15 4.065758146820632e-16 -3.423801563592967e-16
+          linearVelocity 1.1974985158355899e-17 2.2316645328045193e-17 -2.424554684797879e-07
+          angularVelocity -1.219727444046192e-15 -9.860761315262646e-32 -1.6218145540596524e-16
         }
         Solid {
-          translation 2.67004 3.52048 0.7797990912000002
-          rotation 6.391193266723248e-17 -2.5775250875562013e-16 -1 0.26129530717958627
+          translation 2.67004 3.52048 0.7797991221954584
+          rotation -3.4119391731421464e-16 1.422867705721459e-16 -1 0.26129530717958627
           children [
             DEF box Shape {
               appearance Appearance {
@@ -773,12 +757,12 @@ DEF classroom Group {
           boundingObject USE box
           physics Physics {
           }
-          linearVelocity -2.009259691705773e-17 -6.08200852493298e-17 -1.6653344839981758e-15
-          angularVelocity 1.2197274440461917e-15 -4.0657581468206416e-16 -1.8817231758674565e-16
+          linearVelocity -2.1613945790249334e-18 5.562486694111486e-18 -2.4245546853529903e-07
+          angularVelocity -2.465190328815662e-31 -2.0328790734103218e-16 -1.3014747880950108e-16
         }
         Solid {
-          translation 2.99995 3.18973 0.7797990912000002
-          rotation 1.5968101242545397e-17 -4.547257196994178e-17 -1 1.3084953071795864
+          translation 2.99995 3.18973 0.7797991221954584
+          rotation 1.6271618317966257e-16 2.6659134987277945e-17 -1 1.3084953071795864
           children [
             DEF box Shape {
               appearance Appearance {
@@ -795,8 +779,8 @@ DEF classroom Group {
           boundingObject USE box
           physics Physics {
           }
-          linearVelocity 4.5742411061950896e-17 -4.857574601172952e-19 -1.6653344839981758e-15
-          angularVelocity 8.131516293641276e-16 1.2197274440461929e-15 5.749461930111555e-17
+          linearVelocity -9.573473408703824e-17 1.0709356743958318e-17 -2.424554684797879e-07
+          angularVelocity 4.065758146820632e-16 -3.0493186101154804e-15 -1.6795651568004662e-18
         }
         Wall {
           translation 2.11 3.45 0.74
@@ -964,7 +948,7 @@ Robot {
     }
     DEF waist HingeJoint {
       jointParameters HingeJointParameters {
-        position 0.24654498960115745
+        position 0.009089997427615706
         axis 0 0 1
         anchor 0 0 0.25
       }
@@ -980,7 +964,7 @@ Robot {
       ]
       endPoint Solid {
         translation 0 0 0.25
-        rotation 0 0 1 1.911477584322715
+        rotation 0 0 1 1.674022592149173
         children [
           DEF waist Group {
             children [
@@ -1071,7 +1055,7 @@ Robot {
           }
           DEF shourlder HingeJoint {
             jointParameters HingeJointParameters {
-              position 0.014573050923817214
+              position 0.007467804635835067
               anchor 0 0 0.21
             }
             device [
@@ -1086,7 +1070,7 @@ Robot {
             ]
             endPoint Solid {
               translation 0 0 0.21
-              rotation 1 0 0 5.754826246978409
+              rotation 1 0 0 5.747721000690427
               children [
                 DEF amr Group {
                   children [
@@ -1192,7 +1176,7 @@ Robot {
                 }
                 DEF elbow HingeJoint {
                   jointParameters HingeJointParameters {
-                    position -0.019273469383188968
+                    position -0.009516003753488914
                     anchor 0 0 0.33
                   }
                   device [
@@ -1206,8 +1190,8 @@ Robot {
                     }
                   ]
                   endPoint Solid {
-                    translation 5.093703236980212e-12 4.672863070131272e-05 0.32996095052485547
-                    rotation 0.9999999999931766 1.032607420243172e-06 -3.546935123290156e-06 4.324439781743203
+                    translation 5.093703236980211e-12 4.7107424111572875e-05 0.32996140832952753
+                    rotation 0.9999999999931315 1.0533636392009834e-06 -3.5535410755257385e-06 4.3341972473728365
                     children [
                       DEF forearm Group {
                         children [
@@ -1264,7 +1248,7 @@ Robot {
                       }
                       DEF wrist HingeJoint {
                         jointParameters HingeJointParameters {
-                          position -2.383727129982289
+                          position -0.009237200135225887
                           axis 0 0 1
                           anchor 0 0 0.34
                         }
@@ -1280,7 +1264,7 @@ Robot {
                         ]
                         endPoint Solid {
                           translation 0 0 0.34
-                          rotation 0 0 -1 2.3843563201434907
+                          rotation 0 0 -1 0.009866390296404676
                           children [
                             DEF wrist Group {
                               children [
@@ -1370,7 +1354,7 @@ Robot {
                             }
                             DEF pitch HingeJoint {
                               jointParameters HingeJointParameters {
-                                position 0.07663715937662778
+                                position 0.009221064109089336
                                 anchor 0 0 0.035
                               }
                               device [
@@ -1385,7 +1369,7 @@ Robot {
                               ]
                               endPoint Solid {
                                 translation 0 0 0.035
-                                rotation -1 0 0 0.38479076435886006
+                                rotation -1 0 0 0.45220685962639773
                                 children [
                                   DEF pitch Group {
                                     children [
@@ -1487,7 +1471,7 @@ Robot {
                                   }
                                   DEF right_a HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 0.45039474633715904
+                                      position 0.009308129226067987
                                       axis 0 1 0
                                       anchor 0.02 0 0.065
                                     }
@@ -1503,7 +1487,7 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation 0.02 0 0.065
-                                      rotation 0 1 0 0.4503932037970498
+                                      rotation 0 1 0 0.00930658697392114
                                       children [
                                         DEF phalanx Group {
                                           children [
@@ -1561,13 +1545,13 @@ Robot {
                                         }
                                         DEF r_finger HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position -0.4502082697244354
+                                            position -0.008806836533509915
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
                                           endPoint Solid {
                                             translation 0 0 0.05
-                                            rotation 0 -1 0 0.4476895616214557
+                                            rotation 0 -1 0 0.006288128430484276
                                             children [
                                               DEF rg_finger Group {
                                                 children [
@@ -1683,8 +1667,8 @@ Robot {
                                                 ]
                                               }
                                               TouchSensor {
-                                                translation 0.0017622910024228666 3.02260644586827e-05 0.06909110683402275
-                                                rotation -4.837821393492795e-10 -6.911134997628605e-10 -1 -3.141590000571642
+                                                translation 0.0017622741024654331 3.060887173855775e-05 0.06909295051942088
+                                                rotation 4.837866288136355e-10 6.904580240891214e-10 1 3.1415900005716444
                                                 name "finger_sensor"
                                                 boundingObject Shape {
                                                   geometry Box {
@@ -1697,29 +1681,29 @@ Robot {
                                                   0 0 0
                                                   0.01 1 0
                                                 ]
-                                                linearVelocity 3.814139711342082e-05 1.2189271774635014e-05 -0.0001077504150806282
-                                                angularVelocity 6.476563969954246e-05 -0.00020976317334356554 3.594981900474736e-06
+                                                linearVelocity 5.282388611066858e-05 5.45995645997276e-06 -7.28871683730148e-05
+                                                angularVelocity 1.977637620156718e-05 -0.00019178552110520194 -1.9407558042751522e-07
                                               }
                                             ]
                                             name "right_finger"
                                             boundingObject USE rg_finger
                                             physics Physics {
                                             }
-                                            linearVelocity 3.61376641250794e-05 1.1564035153710014e-05 -0.00010813390212382049
-                                            angularVelocity 6.476563969815033e-05 -0.00020976317334224872 3.5949818988748365e-06
+                                            linearVelocity 5.15138881097103e-05 5.324627708173109e-06 -7.264457255536009e-05
+                                            angularVelocity 1.9776376201030714e-05 -0.00019178552110549419 -1.940755804706457e-07
                                           }
                                         }
                                       ]
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
-                                      linearVelocity 2.829579310359114e-05 9.406020528822321e-06 -9.037039781851396e-05
-                                      angularVelocity 6.578402679823445e-05 -0.00021077510501471674 2.156350401205894e-06
+                                      linearVelocity 3.515845562618927e-05 3.635903796704779e-06 -6.919773397651858e-05
+                                      angularVelocity 1.972618364761457e-05 -0.00019179123472744982 -1.835724521169168e-07
                                     }
                                   }
                                   DEF left_a HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position -0.4505608269582573
+                                      position -0.009452480294433952
                                       axis 0 1 0
                                       anchor -0.02 0 0.065
                                     }
@@ -1733,7 +1717,7 @@ Robot {
                                     ]
                                     endPoint Solid {
                                       translation -0.02 0 0.065
-                                      rotation 0 -1 0 0.45055155867556607
+                                      rotation 0 -1 0 0.009443212011763718
                                       children [
                                         Group {
                                           children [
@@ -1791,13 +1775,13 @@ Robot {
                                         }
                                         DEF l_finger HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 0.4493516239404795
+                                            position 0.008474077705826033
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
                                           endPoint Solid {
                                             translation 0 0 0.05
-                                            rotation 0 0.9999999999999999 0 0.44781371491332095
+                                            rotation 0 1 0 0.006936168678689418
                                             children [
                                               DEF lf_finger Group {
                                                 children [
@@ -1917,8 +1901,8 @@ Robot {
                                             boundingObject USE lf_finger
                                             physics Physics {
                                             }
-                                            linearVelocity 4.594819297949264e-05 1.4749546613434079e-05 -9.50270745494134e-05
-                                            angularVelocity 6.479940902553118e-05 -0.00020979673677107692 3.5472895345678384e-06
+                                            linearVelocity 5.158514706314507e-05 5.333837173304511e-06 -7.252779397144594e-05
+                                            angularVelocity 1.9767253160278408e-05 -0.00019178658364742414 -1.9215054413638226e-07
                                           }
                                         }
                                       ]
@@ -1926,19 +1910,19 @@ Robot {
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
-                                      linearVelocity 3.354602403596402e-05 1.111047680756084e-05 -8.335701376946043e-05
-                                      angularVelocity 6.503226539603112e-05 -0.0002100281285145843 3.2183464991801207e-06
+                                      linearVelocity 3.519719049541738e-05 3.641115012843373e-06 -6.913263705958195e-05
+                                      angularVelocity 1.9775884448808594e-05 -0.00019178565153091497 -1.9395753319435623e-07
                                     }
                                   }
                                   DEF right_p HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position 0.44991314189295273
+                                      position 0.008854129584550549
                                       axis 0 1 0
                                       anchor 0.06 0 0.065
                                     }
                                     endPoint Solid {
                                       translation 0.06 0 0.065
-                                      rotation 0 1 0 0.4500716319940215
+                                      rotation 0 1 0 0.009012619685604219
                                       children [
                                         DEF phalanx Group {
                                           children [
@@ -1996,7 +1980,7 @@ Robot {
                                         }
                                         HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position -0.44972615603257443
+                                            position -0.008352327644337798
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
@@ -2009,19 +1993,19 @@ Robot {
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
-                                      linearVelocity 2.4909302528808067e-05 8.284053775739387e-06 -9.489457701348218e-05
-                                      angularVelocity 6.573706458135753e-05 -0.00021072844141325578 2.2226920206983543e-06
+                                      linearVelocity 3.5119431574101794e-05 3.631944998907844e-06 -6.926167899367206e-05
+                                      angularVelocity 1.9726699995521153e-05 -0.00019179117627489908 -1.8368038608012364e-07
                                     }
                                   }
                                   DEF left_p HingeJoint {
                                     jointParameters HingeJointParameters {
-                                      position -0.45085072269897386
+                                      position -0.009684513518456494
                                       axis 0 1 0
                                       anchor -0.06 0 0.065
                                     }
                                     endPoint Solid {
                                       translation -0.06 0 0.065
-                                      rotation 0 -1 0 0.4511263753004567
+                                      rotation 0 -0.9999999999999999 0 0.00996016611988175
                                       children [
                                         Group {
                                           children [
@@ -2079,7 +2063,7 @@ Robot {
                                         }
                                         HingeJoint {
                                           jointParameters HingeJointParameters {
-                                            position 0.44964180040665
+                                            position 0.008706391655302959
                                             axis 0 1 0
                                             anchor 0 0 0.05
                                           }
@@ -2092,8 +2076,8 @@ Robot {
                                       boundingObject USE phalanx
                                       physics Physics {
                                       }
-                                      linearVelocity 3.69335768876177e-05 1.2232466489838915e-05 -7.883125851003279e-05
-                                      angularVelocity 6.497649691524361e-05 -0.00020997271483775995 3.297128223534874e-06
+                                      linearVelocity 3.52354390209306e-05 3.644992858846384e-06 -6.906830195718956e-05
+                                      angularVelocity 1.977644361747014e-05 -0.00019178558851239616 -1.9407448088561502e-07
                                     }
                                   }
                                   Camera {
@@ -2108,40 +2092,40 @@ Robot {
                                 boundingObject USE pitch
                                 physics Physics {
                                 }
-                                linearVelocity 2.416103554523096e-05 8.309234995198301e-06 -7.702954431335011e-05
-                                angularVelocity 6.488477899463824e-05 -0.00020988161599809287 3.426686408606607e-06
+                                linearVelocity 2.409131692144872e-05 2.4938897702322297e-06 -6.684852573690366e-05
+                                angularVelocity 1.9768265778843606e-05 -0.0001917865865191436 -1.9236542082124562e-07
                               }
                             }
                           ]
                           boundingObject USE wrist
                           physics Physics {
                           }
-                          linearVelocity 1.6109841507010922e-05 5.710694743323249e-06 -6.811196468644901e-05
-                          angularVelocity 6.851355432044667e-05 -0.00019826498199466126 -2.175954710938444e-06
+                          linearVelocity 1.4153682810559753e-05 1.4662128073509472e-06 -6.243448112028977e-05
+                          angularVelocity 1.933022201702084e-05 -0.00018785794770829998 -1.6857233284035414e-07
                         }
                       }
                     ]
                     boundingObject USE forearm
                     physics Physics {
                     }
-                    linearVelocity -2.0418040125458715e-05 -7.2384526700224005e-06 -3.8375889100139524e-05
-                    angularVelocity 7.008802872644646e-05 -0.00019770733675439318 8.628411804244137e-10
+                    linearVelocity -2.048128277330193e-05 -2.1217661260479013e-06 -3.557047817626914e-05
+                    angularVelocity 1.9459731593082177e-05 -0.00018784524315388794 8.746543137020766e-11
                   }
                 }
               ]
               boundingObject USE amr
               physics Physics {
               }
-              linearVelocity -5.698635435442451e-06 -2.0202098550750594e-06 -3.5293420941798275e-06
-              angularVelocity 4.77303857373496e-05 -0.00013463993530747032 6.150175632061114e-10
+              linearVelocity -5.56982471353222e-06 -5.770049472922105e-07 -3.3222849933511524e-06
+              angularVelocity 1.3689873191719645e-05 -0.00013214866557956925 7.069652539731912e-11
             }
           }
         ]
         boundingObject USE waist
         physics Physics {
         }
-        linearVelocity -1.674221046238002e-11 -7.188275842533543e-12 -6.473794150834798e-13
-        angularVelocity 1.3382173420760363e-10 -3.089914933354374e-10 4.0893961409084365e-10
+        linearVelocity -6.8034025633393275e-12 -7.113133796028469e-13 -8.443663433015856e-13
+        angularVelocity 1.3371929572250728e-11 -1.2722864122488047e-10 5.5889624269533394e-11
       }
     }
   ]
@@ -2152,8 +2136,8 @@ Robot {
 DEF boxes Group {
   children [
     Solid {
-      translation 2.5566500000348937 3.380370000025572 0.7797990912000002
-      rotation -1.2779056672030196e-16 4.961474428291035e-16 -1 0.15095530717958658
+      translation 2.5566500000348937 3.380370000025572 0.7797991221954584
+      rotation 3.8835069370759263e-16 5.351787210385772e-16 -1 0.15095530717958663
       children [
         DEF box Shape {
           appearance Appearance {
@@ -2173,8 +2157,8 @@ DEF boxes Group {
       recognitionColors [
         1 1 1
       ]
-      linearVelocity -8.789236513114841e-18 -3.709247144545032e-17 -1.6653344839981758e-15
-      angularVelocity 1.2197274440461929e-15 8.131516293641275e-16 -1.8967084052519668e-16
+      linearVelocity 2.6322563919015072e-18 -2.1776464575039824e-17 -2.424554684797879e-07
+      angularVelocity 6.0986372202309585e-16 2.0328790734103228e-16 1.7247298797732916e-16
     }
   ]
 }
