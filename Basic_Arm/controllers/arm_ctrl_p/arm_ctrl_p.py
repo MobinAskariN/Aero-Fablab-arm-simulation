@@ -3,12 +3,17 @@ import math
 import numpy as np
 import cv2  
 import random
+from controller import Keyboard
 
 # -----------------------------------------------------------------------------------------------------
 # INITIALIZATION (DO NOT MODIFY!)
 # -----------------------------------------------------------------------------------------------------
 robot = Robot()
 timestep = int(robot.getBasicTimeStep())
+
+keyboard = Keyboard()
+keyboard.enable(timestep)
+
 
 # Initialize Motors
 motors = {
@@ -19,6 +24,7 @@ motors = {
     "pitch": robot.getDevice('pitch_motor'),
     "claw": robot.getDevice('phalanx_motor::right')
 }
+
 
 for m in motors.values():
     m.setPosition(float('inf'))
@@ -42,17 +48,18 @@ for s in sensors.values():
 camera = robot.getDevice('camera')
 camera.enable(timestep * 2)
 
-# Order of placement
-order = random.randint(1,6)
+#homing
+homing_done = False
 
 # -----------------------------------------------------------------------------------------------------
 # FUNCTION participants must complete
 # -----------------------------------------------------------------------------------------------------
-def arm_controller(sensor_values, image, order):
+def arm_controller(sensor_values, image):
     """
     TODO: process image and implement arm control logic here.
     You are free to import classes, define new functions, and 
-    modify the code as you wish but the desired format must stay
+    modify the drm_controller function as you wish but the desired 
+    format of the other parts of the program must stay exactly
     the same; meaning after any process, you should return this dict
     at the end of current function:
     {
@@ -63,35 +70,17 @@ def arm_controller(sensor_values, image, order):
         "pitch": vel,
         "claw": vel
     }
-    
-    You should place the boxes on the matching surface in respect to value of 'order':
-    1 : blue, green, black
-    2 : blue, black, green
-    3 : green, blue, black
-    4 : green, black, blue
-    5 : black, blue, green
-    6 : black, green, blue
     """
     
     print(sensor_values)
-    print('order: ', order)
     
     if image is not None:
-        width = camera.getWidth()
-        height = camera.getHeight()
-        
-        # Convert image to a numpy array (BGRA format)
-        img_data = np.frombuffer(image, dtype=np.uint8)
-        img_data = img_data.reshape((height, width, 4))  # Reshape to (height, width, 4)
-        
-        # Convert BGRA to BGR by removing the alpha channel (last channel)
-        bgr_image = img_data[:, :, :3]
 
         # Show the image using OpenCV
-        cv2.imshow("Camera Image", bgr_image)
+        cv2.imshow("Camera Image", image)
         cv2.waitKey(1)  
         
-    #Return speed of each joint  
+    #Return MANUAL_speed of each joint  
     return {
         "waist": 0.0,
         "shoulder": 0.0,
@@ -102,21 +91,137 @@ def arm_controller(sensor_values, image, order):
     }
 
 # -----------------------------------------------------------------------------------------------------
+# Manual control for testing (DO NOT MODIFY!)
+# -----------------------------------------------------------------------------------------------------
+def keyboard_arm_controller(sensor_values, image):
+    MANUAL_SPEED = 0.5  
+
+    velocities = {
+        "waist": 0.0,
+        "shoulder": 0.0,
+        "elbow": 0.0,
+        "wrist": 0.0,
+        "pitch": 0.0,
+        "claw": 0.0
+    }
+
+    key = keyboard.getKey()
+    
+    print(sensor_values)
+    
+    if image is not None:
+
+        cv2.imshow("Camera Image", image)
+        cv2.waitKey(1)  
+    
+    if key == ord('Q'):
+        velocities["waist"] = +MANUAL_SPEED
+    elif key == ord('A'):
+        velocities["waist"] = -MANUAL_SPEED
+
+    elif key == ord('W'):
+        velocities["shoulder"] = +MANUAL_SPEED
+    elif key == ord('S'):
+        velocities["shoulder"] = -MANUAL_SPEED
+
+    elif key == ord('E'):
+        velocities["elbow"] = +MANUAL_SPEED
+    elif key == ord('D'):
+        velocities["elbow"] = -MANUAL_SPEED
+
+    elif key == ord('R'):
+        velocities["wrist"] = +MANUAL_SPEED
+    elif key == ord('F'):
+        velocities["wrist"] = -MANUAL_SPEED
+
+    elif key == ord('T'):
+        velocities["pitch"] = +MANUAL_SPEED
+    elif key == ord('G'):
+        velocities["pitch"] = -MANUAL_SPEED
+
+    elif key == ord('Y'):
+        velocities["claw"] = +MANUAL_SPEED
+    elif key == ord('H'):
+        velocities["claw"] = -MANUAL_SPEED
+
+    return velocities
+
+# -----------------------------------------------------------------------------------------------------
+# Move arm to initial pose
+# -----------------------------------------------------------------------------------------------------
+def move_arm_to_initial(sensor_values,
+                         targets=None,
+                         kp=1.5,
+                         tolerance=0.01,
+                         max_speed=0.6):
+
+
+    if targets is None:
+        targets = {
+            "waist": 0.0,
+            "shoulder": 0.0,
+            "elbow": 0.0,
+            "wrist": 0.0,
+            "pitch": 0.0,
+            "claw": 0.0
+        }
+
+    velocities = {}
+
+    for joint, target in targets.items():
+
+        sensor_key = "fingers" if joint == "claw" else joint
+        current = sensor_values[sensor_key]
+        error = target - current
+
+        if abs(error) < tolerance:
+            velocities[joint] = 0.0
+        else:
+            vel = kp * error
+
+            vel = max(min(vel, max_speed), -max_speed)
+            velocities[joint] = vel
+
+    return velocities
+
+# -----------------------------------------------------------------------------------------------------
 # MAIN LOOP (DO NOT MODIFY!)
 # -----------------------------------------------------------------------------------------------------
 while robot.step(timestep) != -1:
     
-    # read all sensors
     sensor_values = {name: s.getValue() for name, s in sensors.items()}
 
-    # get camera frame (if needed)
+    for name, s in sensor_values.items():
+        if abs(s) < 0.0001:
+            sensor_values[name] = 0.0
+        else:
+            sensor_values[name] = round(s, 3)
     image = camera.getImage()
     
-    
-    # call the controller
-    velocities = arm_controller(sensor_values, image, order)
+    if image is not None:
+        width = camera.getWidth()
+        height = camera.getHeight()
+        
+        img_data = np.frombuffer(image, dtype=np.uint8)
+        img_data = img_data.reshape((height, width, 4))
+        
+        bgr_image = img_data[:, :, :3]
 
-    # set returned velocities to motors
+    # homing
+    if not homing_done:
+        velocities = move_arm_to_initial(sensor_values)
+
+        if all(abs(v) < 1e-3 for v in velocities.values()):
+            homing_done = True
+            print("Homing completed.")
+    else:
+   
+        # call the participant's controller
+        velocities = arm_controller(sensor_values, bgr_image)
+
+        # call the manuall controller
+        # velocities = keyboard_arm_controller(sensor_values, bgr_image)
+
     for joint, vel in velocities.items():
         motors[joint].setVelocity(vel)
 
